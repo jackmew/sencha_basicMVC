@@ -19,11 +19,25 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
+    //create a single global namespace for your entire app
     name: 'Jackmew_MVC',
-    //automatically load controllers
+
+    requires: [
+        'Ext.field.*',
+        'Ext.form.*',
+        'Ext.Img',
+        'Ext.data.proxy.JsonP',
+        'Ext.dataview.NestedList',
+        //weird... => I think need to using "stores: ['People']"
+        'Jackmew_MVC.store.People'
+    ],
+    //but it doesn't work.
+    //stores: ['People'],
     controllers: ['Main'],
     views: ['Address','Contact','Giant','Home','Viewport'],
-    models:['People'],
+    
+    models: ['People'],
+
 
     launch: function() {
         Ext.create('Jackmew_MVC.view.Viewport');
